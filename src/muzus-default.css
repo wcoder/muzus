@@ -1,5 +1,41 @@
 
-
 .muzus a {
 	display: block;
+	background: #f6f6f6;
+	border-bottom: 1px solid #ccc;
+	line-height: 32px;
+	padding-left: 32px;
+	text-decoration: none;
+	color: #333;
+	cursor: default;
 }
+
+.muzus a:last-child {
+	border-bottom: none;
+}
+
+.muzus a > .muzus-play::after {
+	content: '\25b8';
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	background: #ccc;
+	text-align: center;
+	margin-left: -32px;
+	color: #333;
+}
+
+.muzus a > .muzus-title {
+	font-weight: 700;
+}
+
+.muzus a > .muzus-time {
+	float: right;
+	font-size: 80%;
+}
+
+.muzus a > .muzus-time > .muzus-time-current {
+	color: #999;
+}
+
