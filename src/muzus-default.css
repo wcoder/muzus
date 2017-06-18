@@ -3,8 +3,8 @@
 	display: block;
 	background: #f6f6f6;
 	border-bottom: 1px solid #ccc;
-	line-height: 32px;
-	padding-left: 32px;
+	_line-height: 32px;
+	_padding-left: 32px;
 	text-decoration: none;
 	color: #333;
 	cursor: default;
@@ -14,7 +14,8 @@
 	border-bottom: none;
 }
 
-.muzus a > .muzus-play::after {
+.muzus a .muzus-play::after,
+.muzus a .muzus-pause::after {
 	content: '\25b8';
 	display: inline-block;
 	width: 32px;
@@ -25,17 +26,20 @@
 	margin-left: -32px;
 	color: #333;
 }
+.muzus a .muzus-pause::after {
+	content: '||';
+}
 
-.muzus a > .muzus-title {
+.muzus a  .muzus-title {
 	font-weight: 700;
 }
 
-.muzus a > .muzus-time {
+.muzus a  .muzus-time {
 	float: right;
 	font-size: 80%;
 }
 
-.muzus a > .muzus-time > .muzus-time-current {
+.muzus a  .muzus-time > .muzus-time-current {
 	color: #999;
 }
 
