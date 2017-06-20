@@ -125,17 +125,19 @@
 		}
 
 		function nextTrack () {
-			var currentTrackIndex = _currentTrack.id;
+			var currentTrackIndex = _currentTrack.id,
+				nextTrackIndex = currentTrackIndex < _trackList.length - 1 ? currentTrackIndex + 1 : 0;
 
-			console.log(currentTrackIndex == _trackList.length - 1 && _repeatTrackListEnabled, _repeatTrackListEnabled);
-
-			if (currentTrackIndex == _trackList.length - 1 && _repeatTrackListEnabled) {
-				var nextTrackIndex = currentTrackIndex < _trackList.length - 1 ? currentTrackIndex + 1 : 0;
-				var nextTrack = _trackList[nextTrackIndex];
-				startPlayTrack(nextTrack);
-			} else {
+			if (_trackList.length == 1) {
 				stopPlayer();
+				return;
 			}
+			if (nextTrackIndex < currentTrackIndex && !_repeatTrackListEnabled) {
+				stopPlayer();
+				return;
+			}
+
+			startPlayTrack(_trackList[nextTrackIndex]);
 		}
 
 		function startPlayTrack (track) {
