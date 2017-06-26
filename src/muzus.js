@@ -242,7 +242,7 @@
 		return _self;
 	}
 
-	window.Muzus = {
+	return window.Muzus = {
 		init: function (_repeatTrackList) {
 			var _muzusDeclarations = _d.querySelectorAll(MUZUS_SELECTOR),
 				_repeatTrackList = _repeatTrackList || false;
@@ -252,4 +252,6 @@
 			}
 		}
 	};
-}(window, document));
+
+
+}(window, document).init());
