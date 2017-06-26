@@ -60,6 +60,9 @@
 	width: 100%;
 	height: 10px;
 }
+.muzus-progress-hide {
+	visibility: hidden;
+}
  .muzus-progress-process {
 	width: 0;
 	height: 10px;

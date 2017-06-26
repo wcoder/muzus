@@ -14,6 +14,7 @@
 		MUZUS_PLAY = 'muzus-play',
 		MUZUS_PAUSE = 'muzus-pause',
 		MUZUS_TRACK = 'muzus-track',
+		MUZUS_PROGRESS = 'muzus-progress',
 		TRACK_STOPED = 0,
 		TRACK_PLAYING = 1,
 		TRACK_PAUSED = 2;
@@ -191,7 +192,7 @@
 			_timeBlock = createElement('span', 'muzus-time', _infoRow),
 			_currentTimeLabel = createElement('span', 'muzus-time-current', _timeBlock),
 			_endTimeLabel = createElement('span', 'muzus-time-end', _timeBlock),
-			_progressBlock = createElement('div', 'muzus-progress', element),
+			_progressBlock = createElement('div', MUZUS_PROGRESS + ' muzus-progress-hide', element),
 			_progressBuffer = createElement('div', 'muzus-progress-buffer', _progressBlock),
 			_progressProcess = createElement('div', 'muzus-progress-process', _progressBlock),
 			_progressSpinner = createRangeElement('muzus-progress-spinner', _progressBlock),
@@ -210,6 +211,7 @@
 			_currentState = TRACK_PLAYING;
 			element.className = MUZUS_TRACK + ' muzus-track-active';
 			_playButton.className = MUZUS_PAUSE;
+			_progressBlock.className = MUZUS_PROGRESS;
 		};
 		_self.pause = function () {
 			_currentState = TRACK_PAUSED;
@@ -220,6 +222,7 @@
 			_currentState = TRACK_STOPED;
 			element.className = MUZUS_TRACK;
 			_playButton.className = MUZUS_PLAY;
+			_progressBlock.className = MUZUS_PROGRESS + ' muzus-progress-hide';
 
 			_self.setCurrentTime(0);
 			_self.setProgress(0);
