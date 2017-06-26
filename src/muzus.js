@@ -96,6 +96,7 @@
 			track.setChangeProgressHandler(trackProgressChangedHandler);
 
 			_trackList.push(track);
+			preloadTrack(track);
 		}
 
 		// private methods
@@ -156,6 +157,18 @@
 			_player.currentTime = 0;
 
 			_currentTrack.stop();
+		}
+
+		function preloadTrack (track) {
+			var preloader = createAudioElement();
+			preloader.volume = 0;
+			preloader.src = track.src;
+			preloader.onplaying = function () {
+				preloader.pause();
+				track.setEndTime(preloader.duration);
+				preloader = null;
+			}
+			preloader.play();
 		}
 	}
 
