@@ -175,24 +175,24 @@
 
 	function Track (id, element) {
 
-		var _title = element.innerText;
+		var _title = element.innerText,
+			_src = element.href;
 
-		// reset default
+		// replace element
 
-		element.onclick = function () { return false; };
-		element.innerText = '';
-		element.className = MUZUS_TRACK;
+		var newElement = createElement('div', MUZUS_TRACK);
+		element.parentNode.replaceChild(newElement, element);
 
 		// private
 
 		var _currentState = TRACK_STOPED,
-			_infoRow = createElement('div', 'muzus-info', element),
+			_infoRow = createElement('div', 'muzus-info', newElement),
 			_playButton = createElement('span', MUZUS_PLAY, _infoRow),
 			_titleLabel = createElement('span', 'muzus-title', _infoRow),
 			_timeBlock = createElement('span', 'muzus-time', _infoRow),
 			_currentTimeLabel = createElement('span', 'muzus-time-current', _timeBlock),
 			_endTimeLabel = createElement('span', 'muzus-time-end', _timeBlock),
-			_progressBlock = createElement('div', MUZUS_PROGRESS + ' muzus-progress-hide', element),
+			_progressBlock = createElement('div', MUZUS_PROGRESS + ' muzus-progress-hide', newElement),
 			_progressBuffer = createElement('div', 'muzus-progress-buffer', _progressBlock),
 			_progressProcess = createElement('div', 'muzus-progress-process', _progressBlock),
 			_progressSpinner = createRangeElement('muzus-progress-spinner', _progressBlock),
@@ -205,22 +205,22 @@
 		// public
 
 		_self.id = id;
-		_self.src = element.href;
+		_self.src = _src;
 		_self.title = _title;
 		_self.play = function () {
 			_currentState = TRACK_PLAYING;
-			element.className = MUZUS_TRACK + ' muzus-track-active';
+			newElement.className = MUZUS_TRACK + ' muzus-track-active';
 			_playButton.className = MUZUS_PAUSE;
 			_progressBlock.className = MUZUS_PROGRESS;
 		};
 		_self.pause = function () {
 			_currentState = TRACK_PAUSED;
-			element.className = MUZUS_TRACK;
+			newElement.className = MUZUS_TRACK;
 			_playButton.className = MUZUS_PLAY;
 		};
 		_self.stop = function () {
 			_currentState = TRACK_STOPED;
-			element.className = MUZUS_TRACK;
+			newElement.className = MUZUS_TRACK;
 			_playButton.className = MUZUS_PLAY;
 			_progressBlock.className = MUZUS_PROGRESS + ' muzus-progress-hide';
 
