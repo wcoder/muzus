@@ -97,6 +97,7 @@
 			track.setChangeProgressHandler(trackProgressChangedHandler);
 
 			_trackList.push(track);
+
 			preloadTrack(track);
 		}
 
@@ -164,8 +165,9 @@
 			var preloader = createAudioElement();
 			preloader.volume = 0;
 			preloader.src = track.src;
-			preloader.onplaying = function () {
+			preloader.onloadedmetadata = function () {
 				preloader.pause();
+				track.setCurrentTime(0);
 				track.setEndTime(preloader.duration);
 				preloader = null;
 			}
