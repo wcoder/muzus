@@ -6,6 +6,7 @@
 	text-decoration: none;
 	color: #333;
 	cursor: default;
+	position: relative;
 }
 
 .muzus-track:last-child {
@@ -65,14 +66,15 @@
 }
  .muzus-progress-process {
 	width: 0;
-	height: 10px;
+	height: 3px;
 	opacity: 0.4;
 	background: red;
+	margin-top: -3px;
 }
 
 .muzus-progress-buffer {
 	width: 0;
-	height: 10px;
+	height: 3px;
 	opacity: 0.4;
 	background: blue;
 }
@@ -87,7 +89,10 @@ input[type=range].muzus-progress-spinner {
 	background: transparent;
 	position: relative;
 	top: 0;
-	height: 20px;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	position: absolute;
 }
 input[type=range].muzus-progress-spinner:focus {
 	outline: none;
@@ -104,7 +109,7 @@ input[type=range].muzus-progress-spinner::-webkit-slider-runnable-track {
 input[type=range].muzus-progress-spinner::-webkit-slider-thumb {
 	height: 10px;
 	width: 10px;
-	background: #999;
+	background: rgba(0, 0, 0, 0);
 	cursor: pointer;
 	border-radius: 50%;
 
