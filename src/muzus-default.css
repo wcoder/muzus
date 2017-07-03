@@ -17,16 +17,18 @@
 	background: #619adf;
 }
 
+/* PLAY */
+
 .muzus-play::after,
 .muzus-pause::after {
 	content: '\25b8';
 	display: inline-block;
-	width: 32px;
-	height: 32px;
+	width: 20px;
+	height: 10px;
 	cursor: pointer;
-	background: #ccc;
 	text-align: center;
-	margin-left: -32px;
+	position: relative;
+	z-index: 2;
 	color: #333;
 }
 .muzus-pause::after {
