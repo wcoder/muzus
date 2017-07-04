@@ -165,13 +165,15 @@
 			var preloader = createAudioElement();
 			preloader.volume = 0;
 			preloader.src = track.src;
-			preloader.onloadedmetadata = function () {
+			preloader.onplaying = function () {
 				preloader.pause();
 				track.setCurrentTime(0);
 				track.setEndTime(preloader.duration);
 				preloader = null;
 			}
-			preloader.play();
+			_w.setTimeout(function () {
+				preloader.play();
+			}, 100);
 		}
 	}
 
