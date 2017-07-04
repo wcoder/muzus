@@ -81,6 +81,19 @@
 	background: blue;
 }
 
+.muzus-progress-time-hint {
+	display: inline-block;
+	visibility: hidden;
+	position: relative;
+	top: -25px;
+	margin-left: -10px;
+	font-size: 12px;
+	background: #f6f6f6;
+}
+.muzus-progress-time-hint-show {
+	visibility: visible;
+}
+
 /*----------------
 	SPINNER
 ----------------*/

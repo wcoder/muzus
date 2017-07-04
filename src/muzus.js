@@ -15,6 +15,7 @@
 		MUZUS_PAUSE = 'muzus-pause',
 		MUZUS_TRACK = 'muzus-track',
 		MUZUS_PROGRESS = 'muzus-progress',
+		MUZUS_PROGRESS_TIME_HINT = 'muzus-progress-time-hint',
 		TRACK_STOPED = 0,
 		TRACK_PLAYING = 1,
 		TRACK_PAUSED = 2;
@@ -95,6 +96,7 @@
 			var track = new Track(i, trackElement);
 			track.setClickHandler(trackClickHandler);
 			track.setChangeProgressHandler(trackProgressChangedHandler);
+			track.setProgressTimeHintHandler(trackProgressTimeHintHandler);
 
 			_trackList.push(track);
 
@@ -124,6 +126,12 @@
 				_player.currentTime = (value * _player.duration) / 100;
 			} else {
 				value = 0;
+			}
+		}
+
+		function trackProgressTimeHintHandler (setTrackProgressTimeHintCallback, positionInPercentage) {
+			if (_player.duration) {
+				setTrackProgressTimeHintCallback(_player.duration * positionInPercentage);
 			}
 		}
 
@@ -200,6 +208,7 @@
 			_progressBuffer = createElement('div', 'muzus-progress-buffer', _progressBlock),
 			_progressProcess = createElement('div', 'muzus-progress-process', _progressBlock),
 			_progressSpinner = createRangeElement('muzus-progress-spinner', _progressBlock),
+			_progressTimeHint = createElement('div', MUZUS_PROGRESS_TIME_HINT, _progressBlock),
 			_self = {};
 
 		// setup controls
@@ -231,6 +240,7 @@
 			_self.setCurrentTime(0);
 			_self.setProgress(0);
 			_self.setBuffer(0);
+			_self.hideProgressTimeHint();
 		};
 		_self.getState = function () {
 			return _currentState;
@@ -248,6 +258,18 @@
 		_self.setBuffer = function (percent) {
 			_progressBuffer.style.width = percent + '%';
 		};
+		_self.setProgressTimeHint = function (time) {
+			_progressTimeHint.innerText = toFormatedString(time);
+		};
+		_self.showProgressTimeHint = function () {
+			_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
+		};
+		_self.hideProgressTimeHint = function () {
+			_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT;
+		};
+		_self.setProgressTimeHintPosition = function (offsetLeft) {
+			_progressTimeHint.style.left = offsetLeft + 'px';
+		};
 		_self.setClickHandler = function (handler) {
 			_playButton.addEventListener('click', function () {
 				handler(_self);
@@ -258,6 +280,14 @@
 				handler(e.target.value);
 			});
 		};
+		_self.setProgressTimeHintHandler = function (handler) {
+			_progressSpinner.addEventListener('mouseover', _self.showProgressTimeHint);
+			_progressSpinner.addEventListener('mouseout', _self.hideProgressTimeHint);
+			_progressSpinner.addEventListener('mousemove', function (e) {
+				_self.setProgressTimeHintPosition(e.offsetX);
+				handler(_self.setProgressTimeHint, e.offsetX / _progressSpinner.offsetWidth);
+			});
+		}
 
 		return _self;
 	}
