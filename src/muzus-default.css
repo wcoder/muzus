@@ -21,21 +21,64 @@
 	PLAY
 ----------------*/
 
-.muzus-play::after,
-.muzus-pause::after {
-	content: '\25b8';
+.muzus-play,
+.muzus-pause {
 	display: inline-block;
-	width: 20px;
-	height: 10px;
-	cursor: pointer;
-	text-align: center;
-	position: relative;
-	z-index: 2;
-	color: #333;
+  width: 9px;
+  height: 10px;
+  transition: .2s;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg,
+    black 0,
+    black 9px,
+    white 9px,
+    white 12px,
+    black 12px
+  );
+  background-size: 21px;
+  background-position: 50%;
 }
-.muzus-pause::after {
-	content: '||';
+
+.muzus-pause {
+  background-position: 100%;
 }
+
+.muzus-play:after,
+.muzus-play:before,
+.muzus-pause:after,
+.muzus-pause:before {
+  content: "";
+  position: absolute;
+  width: 38px;
+  height: 10px;
+  display: block;
+  background: #fff;
+  z-index: 200;
+  transition: .2s;
+  left: 8px;
+}
+
+.muzus-play:after,
+.muzus-pause:after {
+  top: 0;
+  transform: rotate(30deg);
+}
+
+.muzus-play:before,
+.muzus-pause:after {
+  bottom: 0;
+  transform: rotate(-30deg);
+}
+
+.muzus-pause:before,
+.muzus-pause:after {
+  left: 0;
+}
+
+/*----------------
+	TITLE
+----------------*/
 
 .muzus-title {
 	font-weight: 700;
