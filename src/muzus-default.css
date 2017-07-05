@@ -1,20 +1,16 @@
+.muzus {
+	font-size: 14px;
+}
 
 .muzus-track {
 	display: block;
-	background: #f6f6f6;
-	border-bottom: 1px solid #ccc;
 	text-decoration: none;
 	color: #333;
 	cursor: default;
 	position: relative;
 }
 
-.muzus-track:last-child {
-	border-bottom: none;
-}
-
 .muzus-track-active {
-	background: #619adf;
 }
 
 /*----------------
@@ -23,13 +19,16 @@
 
 .muzus-play,
 .muzus-pause {
+	z-index: 1;
+	cursor: pointer;
+	margin-right: 5px;
 	display: inline-block;
   width: 9px;
   height: 10px;
   transition: .2s;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg,
+  background-image: linear-gradient(90deg,
     black 0,
     black 9px,
     white 9px,
@@ -40,7 +39,18 @@
   background-position: 50%;
 }
 
-.muzus-pause {
+.muzus-play:hover,
+.muzus-pause:hover {
+	background-image: linear-gradient(90deg,
+		#08f 0,
+		#08f 9px,
+		white 9px,
+		white 12px,
+		#08f 12px
+	);
+}
+
+.muzus-play {
   background-position: 100%;
 }
 
@@ -66,13 +76,13 @@
 }
 
 .muzus-play:before,
-.muzus-pause:after {
+.muzus-pause:before {
   bottom: 0;
   transform: rotate(-30deg);
 }
 
-.muzus-pause:before,
-.muzus-pause:after {
+.muzus-play:before,
+.muzus-play:after {
   left: 0;
 }
 
@@ -81,7 +91,9 @@
 ----------------*/
 
 .muzus-title {
-	font-weight: 700;
+	position: relative;
+	z-index: 1;
+	cursor: text;
 }
 
 /*----------------
@@ -90,10 +102,13 @@
 
 .muzus-time {
 	float: right;
-	font-size: 80%;
+	font-size: 12px;
+	padding-top: 5px;
+	line-height: 12px;
 }
 .muzus-time-current {
-	color: #999;
+	color: #ccc;
+	margin-right: 5px;
 }
 .muzus-time-end {
 
@@ -106,35 +121,69 @@
 .muzus-progress {
 	display: inline-block;
 	width: 100%;
-	height: 10px;
+	height: 2px;
+	background: #eee;
+	margin-top: 5px;
 }
 .muzus-progress-hide {
-	visibility: hidden;
+	/*visibility: hidden;*/
 }
- .muzus-progress-process {
+.muzus-progress-process {
 	width: 0;
-	height: 3px;
-	opacity: 0.4;
-	background: red;
-	margin-top: -3px;
+	height: 2px;
+	background: #08f;
+	overflow: hidden;
+	box-sizing: border-box;
+	margin-top: -2px;
+	position: relative;
+}
+
+.muzus-progress-process:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 3px;
+	background: #000;
+	cursor: pointer;
 }
 
 .muzus-progress-buffer {
 	width: 0;
-	height: 3px;
-	opacity: 0.4;
-	background: blue;
+	height: 2px;
+	background: #d8d8d8;
 }
 
 .muzus-progress-time-hint {
 	display: inline-block;
 	visibility: hidden;
 	position: relative;
-	top: -25px;
-	margin-left: -10px;
+	top: -26px;
+	transform: translateX(-50%);
 	font-size: 12px;
-	background: #f6f6f6;
+	background: #222;
+	color: #fff;
+	padding: 1px 4px;
+	z-index: -1;
+	font-size: 12px;
+	border-radius: 3px;
 }
+
+.muzus-progress-time-hint:after {
+	content: "";
+	width: 5px;
+	height: 5px;
+	background: #222;
+	transform: rotate(-45deg);
+	display: block;
+	position: absolute;
+	left: 50%;
+	bottom: -2px;
+	margin-left: -3px;
+}
+
 .muzus-progress-time-hint-show {
 	visibility: visible;
 }
@@ -153,6 +202,7 @@ input[type=range].muzus-progress-spinner {
 	left: 0;
 	margin: 0;
 	position: absolute;
+	cursor: pointer;
 }
 input[type=range].muzus-progress-spinner:focus {
 	outline: none;

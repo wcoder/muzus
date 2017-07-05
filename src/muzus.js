@@ -249,7 +249,7 @@
 			_currentTimeLabel.innerText = toFormatedString(time);
 		};
 		_self.setEndTime = function (time) {
-			_endTimeLabel.innerText = '/' + toFormatedString(time);
+			_endTimeLabel.innerText = toFormatedString(time);
 		};
 		_self.setProgress = function (percent) {
 			_progressProcess.style.width = percent + '%';
