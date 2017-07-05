@@ -17,7 +17,9 @@
 	background: #619adf;
 }
 
-/* PLAY */
+/*----------------
+	PLAY
+----------------*/
 
 .muzus-play::after,
 .muzus-pause::after {
