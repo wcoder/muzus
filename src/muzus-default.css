@@ -119,15 +119,11 @@
 ----------------*/
 
 .muzus-progress {
-	display: inline-block;
-	width: 100%;
 	height: 2px;
 	background: #eee;
 	margin-top: 5px;
 }
-.muzus-progress-hide {
-	/*visibility: hidden;*/
-}
+
 .muzus-progress-process {
 	width: 0;
 	height: 2px;
@@ -154,6 +150,10 @@
 	width: 0;
 	height: 2px;
 	background: #d8d8d8;
+}
+
+.muzus-progress-hide .muzus-progress-time-hint {
+	display: none;
 }
 
 .muzus-progress-time-hint {
