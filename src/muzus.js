@@ -199,7 +199,8 @@
 
 		var _currentState = TRACK_STOPED,
 			_infoRow = createElement('div', 'muzus-info', newElement),
-			_playButton = createElement('span', MUZUS_PLAY, _infoRow),
+			_playButtonWrapper = createElement('span', 'muzus-play-wrapper', _infoRow),
+			_playButton = createElement('span', MUZUS_PLAY, _playButtonWrapper),
 			_titleLabel = createElement('span', 'muzus-title', _infoRow),
 			_timeBlock = createElement('span', 'muzus-time', _infoRow),
 			_currentTimeLabel = createElement('span', 'muzus-time-current', _timeBlock),
