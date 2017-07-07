@@ -96,7 +96,6 @@
 			var track = new Track(i, trackElement);
 			track.setClickHandler(trackClickHandler);
 			track.setChangeProgressHandler(trackProgressChangedHandler);
-			track.setProgressTimeHintHandler(trackProgressTimeHintHandler);
 
 			_trackList.push(track);
 
@@ -126,12 +125,6 @@
 				_player.currentTime = (value * _player.duration) / 100;
 			} else {
 				value = 0;
-			}
-		}
-
-		function trackProgressTimeHintHandler (setTrackProgressTimeHintCallback, positionInPercentage) {
-			if (_player.duration) {
-				setTrackProgressTimeHintCallback(_player.duration * positionInPercentage);
 			}
 		}
 
@@ -198,6 +191,7 @@
 		// private
 
 		var _currentState = TRACK_STOPED,
+			_duration = 0,
 			_infoRow = createElement('div', 'muzus-info', newElement),
 			_playButtonWrapper = createElement('span', 'muzus-play-wrapper', _infoRow),
 			_playButton = createElement('span', MUZUS_PLAY, _playButtonWrapper),
@@ -211,10 +205,6 @@
 			_progressSpinner = createRangeElement('muzus-progress-spinner', _progressBlock),
 			_progressTimeHint = createElement('div', MUZUS_PROGRESS_TIME_HINT, _progressBlock),
 			_self = {};
-
-		// setup controls
-
-		_titleLabel.innerText = _title;
 
 		// public
 
@@ -250,6 +240,7 @@
 			_currentTimeLabel.innerText = toFormatedString(time);
 		};
 		_self.setEndTime = function (time) {
+			_duration = time;
 			_endTimeLabel.innerText = toFormatedString(time);
 		};
 		_self.setProgress = function (percent) {
@@ -263,7 +254,9 @@
 			_progressTimeHint.innerText = toFormatedString(time);
 		};
 		_self.showProgressTimeHint = function () {
-			_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
+			if (_currentState > 0 && _duration > 0) {
+				_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
+			}
 		};
 		_self.hideProgressTimeHint = function () {
 			_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT;
@@ -278,17 +271,24 @@
 		};
 		_self.setChangeProgressHandler = function(handler) {
 			_progressSpinner.addEventListener('input', function (e) {
-				handler(e.target.value);
+				if (_currentState > 0  && _duration > 0) {
+					handler(e.target.value);
+				}
 			});
 		};
-		_self.setProgressTimeHintHandler = function (handler) {
-			_progressSpinner.addEventListener('mouseover', _self.showProgressTimeHint);
-			_progressSpinner.addEventListener('mouseout', _self.hideProgressTimeHint);
-			_progressSpinner.addEventListener('mousemove', function (e) {
+
+		// setup controls
+
+		_titleLabel.innerText = _title;
+
+		_progressSpinner.addEventListener('mouseover', _self.showProgressTimeHint);
+		_progressSpinner.addEventListener('mouseout', _self.hideProgressTimeHint);
+		_progressSpinner.addEventListener('mousemove', function (e) {
+			if (_currentState > 0  && _duration > 0) {
 				_self.setProgressTimeHintPosition(e.offsetX);
-				handler(_self.setProgressTimeHint, e.offsetX / _progressSpinner.offsetWidth);
-			});
-		}
+				_self.setProgressTimeHint(_duration * e.offsetX / _progressSpinner.offsetWidth);
+			}
+		});
 
 		return _self;
 	}
