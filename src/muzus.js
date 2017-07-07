@@ -250,19 +250,8 @@
 		_self.setBuffer = function (percent) {
 			_progressBuffer.style.width = percent + '%';
 		};
-		_self.setProgressTimeHint = function (time) {
-			_progressTimeHint.innerText = toFormatedString(time);
-		};
-		_self.showProgressTimeHint = function () {
-			if (_currentState > 0 && _duration > 0) {
-				_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
-			}
-		};
 		_self.hideProgressTimeHint = function () {
 			_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT;
-		};
-		_self.setProgressTimeHintPosition = function (offsetLeft) {
-			_progressTimeHint.style.left = offsetLeft + 'px';
 		};
 		_self.setClickHandler = function (handler) {
 			_playButton.addEventListener('click', function () {
@@ -281,12 +270,17 @@
 
 		_titleLabel.innerText = _title;
 
-		_progressSpinner.addEventListener('mouseover', _self.showProgressTimeHint);
+		_progressSpinner.addEventListener('mouseover', function () {
+			if (_currentState > 0 && _duration > 0) {
+				_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
+			}
+		});
 		_progressSpinner.addEventListener('mouseout', _self.hideProgressTimeHint);
 		_progressSpinner.addEventListener('mousemove', function (e) {
 			if (_currentState > 0  && _duration > 0) {
-				_self.setProgressTimeHintPosition(e.offsetX);
-				_self.setProgressTimeHint(_duration * e.offsetX / _progressSpinner.offsetWidth);
+				var time = _duration * e.offsetX / _progressSpinner.offsetWidth;
+				_progressTimeHint.innerText = toFormatedString(time);
+				_progressTimeHint.style.left = e.offsetX + 'px';
 			}
 		});
 
