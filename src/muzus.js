@@ -219,7 +219,7 @@
 		};
 		_self.pause = function () {
 			_currentState = TRACK_PAUSED;
-			newElement.className = MUZUS_TRACK;
+			newElement.className = MUZUS_TRACK + ' muzus-track-paused';
 			_playButton.className = MUZUS_PLAY;
 		};
 		_self.stop = function () {
