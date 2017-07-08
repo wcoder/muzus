@@ -112,6 +112,11 @@
 .muzus-time-current {
 	color: #ccc;
 	margin-right: 5px;
+	visibility: hidden;
+}
+.muzus-track-active .muzus-time-current,
+.muzus-track-paused .muzus-time-current {
+	visibility: visible;
 }
 .muzus-time-end {
 
