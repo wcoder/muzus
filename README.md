@@ -2,10 +2,11 @@
 New conception of audio player for web. Based on [playeros](https://github.com/wcoder/playeros).
 
 ## Setup
-
+```html
 <!-- include muzus: js and css -->
 <script src="dist/muzus.min.js"></script>
 <link href="dist/muzus-default.css" rel="stylesheet"/>
+```
 
 ### Available in NPM
 ```
