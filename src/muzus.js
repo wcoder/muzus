@@ -287,16 +287,30 @@
 		return _self;
 	}
 
-	return window.Muzus = {
-		init: function (_repeatTrackList) {
-			var _muzusDeclarations = _d.querySelectorAll(MUZUS_SELECTOR),
-				_repeatTrackList = _repeatTrackList || false;
+	var _muzus = {
+		autoStart: true,
+		start: function () {
+			var _muzusDeclarations = _d.querySelectorAll(MUZUS_SELECTOR);
 
 			for (var i = 0; i < _muzusDeclarations.length; i++) {
-				new Player(_muzusDeclarations[i], _repeatTrackList);
+				new Player(_muzusDeclarations[i], false);
 			}
 		}
 	};
 
+	return function () {
 
-}(window, document).init());
+		if (!!_w.Muzus) {
+			if (typeof _w.Muzus.autoStart === 'boolean') {
+				_muzus.autoStart = _w.Muzus.autoStart;
+			}
+		}
+
+		if (_muzus.autoStart) {
+			_muzus.start();
+		}
+
+		_w.Muzus = _muzus;
+	};
+
+}(window, document)());
