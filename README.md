@@ -53,7 +53,7 @@ npm i --only=dev
 
 Compiling:
 ```
-gulp sass
+gulp build:sass
 ```
 
 Auto-compiling:
