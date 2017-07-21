@@ -8,6 +8,10 @@
 		cursor: default;
 		position: relative;
 
+		& + .muzus-track {
+			margin-top: 9px;
+		}
+
 		.muzus-track-active {
 
 			.muzus-time-current {
@@ -23,10 +27,13 @@
 		}
 
 		.muzus-info {
+			height: 15px;
 
 			// PLAY
 
 			.muzus-play-wrapper {
+				display: inline-block;
+				height: 15px;
 
 				.muzus-play,
 				.muzus-pause {
@@ -110,9 +117,8 @@
 				line-height: 12px;
 
 				.muzus-time-current {
-					color: #ccc;
+					color: #d8d8d8;
 					margin-right: 5px;
-					visibility: hidden;
 				}
 
 				.muzus-time-end {
@@ -126,7 +132,8 @@
 		.muzus-progress {
 			height: 2px;
 			background: #eee;
-			margin-top: 5px;
+			margin-top: 9px;
+			position: relative;
 
 			.muzus-progress-buffer {
 				width: 0;
@@ -171,9 +178,9 @@
 			background: #222;
 			color: #fff;
 			padding: 1px 4px;
-			z-index: -1;
 			font-size: 12px;
 			border-radius: 3px;
+			z-index: 1;
 		}
 
 		.muzus-progress-time-hint:after {
@@ -199,15 +206,16 @@
 
 		input[type=range].muzus-progress-spinner {
 			-webkit-appearance: none;
-			width: 100%;
 			background: transparent;
 			position: relative;
-			top: 0;
-			bottom: 0;
+			top: -9px;
+			bottom: -9px;
 			left: 0;
 			margin: 0;
+			width: 100%;
 			position: absolute;
 			cursor: pointer;
+			z-index: 2;
 
 			&:focus {
 				outline: none;

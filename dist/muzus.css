@@ -9,68 +9,75 @@
     /*----------------
 			SPINNER
 		----------------*/ }
+    .muzus .muzus-track + .muzus-track {
+      margin-top: 9px; }
     .muzus .muzus-track .muzus-track-active .muzus-time-current {
       visibility: visible; }
     .muzus .muzus-track .muzus-track-paused .muzus-time-current {
       visibility: visible; }
-    .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play,
-    .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause {
-      z-index: 1;
-      cursor: pointer;
-      margin-right: 5px;
-      display: inline-block;
-      width: 9px;
-      height: 10px;
-      transition: .2s;
-      position: relative;
-      overflow: hidden;
-      background-image: linear-gradient(90deg, black 0, black 9px, white 9px, white 12px, black 12px);
-      background-size: 21px;
-      background-position: 50%; }
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:hover,
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:hover {
-        background-image: linear-gradient(90deg, #08f 0, #08f 9px, white 9px, white 12px, #08f 12px); }
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:after, .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:before,
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:after,
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:before {
-        content: "";
-        position: absolute;
-        width: 38px;
-        height: 10px;
-        display: block;
-        background: #fff;
-        z-index: 200;
-        transition: .2s;
-        left: 8px; }
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:after,
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:after {
-        top: 0;
-        transform: rotate(30deg); }
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:before,
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:before {
-        bottom: 0;
-        transform: rotate(-30deg); }
-    .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play {
-      background-position: 100%; }
-      .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:after, .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:before {
-        left: 0; }
-    .muzus .muzus-track .muzus-info .muzus-title {
-      position: relative;
-      z-index: 1;
-      cursor: text; }
-    .muzus .muzus-track .muzus-info .muzus-time {
-      float: right;
-      font-size: 12px;
-      padding-top: 5px;
-      line-height: 12px; }
-      .muzus .muzus-track .muzus-info .muzus-time .muzus-time-current {
-        color: #ccc;
-        margin-right: 5px;
-        visibility: hidden; }
+    .muzus .muzus-track .muzus-info {
+      height: 15px; }
+      .muzus .muzus-track .muzus-info .muzus-play-wrapper {
+        display: inline-block;
+        height: 15px; }
+        .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play,
+        .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause {
+          z-index: 1;
+          cursor: pointer;
+          margin-right: 5px;
+          display: inline-block;
+          width: 9px;
+          height: 10px;
+          transition: .2s;
+          position: relative;
+          overflow: hidden;
+          background-image: linear-gradient(90deg, black 0, black 9px, white 9px, white 12px, black 12px);
+          background-size: 21px;
+          background-position: 50%; }
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:hover,
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:hover {
+            background-image: linear-gradient(90deg, #08f 0, #08f 9px, white 9px, white 12px, #08f 12px); }
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:after, .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:before,
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:after,
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:before {
+            content: "";
+            position: absolute;
+            width: 38px;
+            height: 10px;
+            display: block;
+            background: #fff;
+            z-index: 200;
+            transition: .2s;
+            left: 8px; }
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:after,
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:after {
+            top: 0;
+            transform: rotate(30deg); }
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:before,
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-pause:before {
+            bottom: 0;
+            transform: rotate(-30deg); }
+        .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play {
+          background-position: 100%; }
+          .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:after, .muzus .muzus-track .muzus-info .muzus-play-wrapper .muzus-play:before {
+            left: 0; }
+      .muzus .muzus-track .muzus-info .muzus-title {
+        position: relative;
+        z-index: 1;
+        cursor: text; }
+      .muzus .muzus-track .muzus-info .muzus-time {
+        float: right;
+        font-size: 12px;
+        padding-top: 5px;
+        line-height: 12px; }
+        .muzus .muzus-track .muzus-info .muzus-time .muzus-time-current {
+          color: #d8d8d8;
+          margin-right: 5px; }
     .muzus .muzus-track .muzus-progress {
       height: 2px;
       background: #eee;
-      margin-top: 5px; }
+      margin-top: 9px;
+      position: relative; }
       .muzus .muzus-track .muzus-progress .muzus-progress-buffer {
         width: 0;
         height: 2px;
@@ -105,9 +112,9 @@
       background: #222;
       color: #fff;
       padding: 1px 4px;
-      z-index: -1;
       font-size: 12px;
-      border-radius: 3px; }
+      border-radius: 3px;
+      z-index: 1; }
     .muzus .muzus-track .muzus-progress-time-hint:after {
       content: "";
       width: 5px;
@@ -123,15 +130,16 @@
       visibility: visible; }
     .muzus .muzus-track input[type=range].muzus-progress-spinner {
       -webkit-appearance: none;
-      width: 100%;
       background: transparent;
       position: relative;
-      top: 0;
-      bottom: 0;
+      top: -9px;
+      bottom: -9px;
       left: 0;
       margin: 0;
+      width: 100%;
       position: absolute;
-      cursor: pointer; }
+      cursor: pointer;
+      z-index: 2; }
       .muzus .muzus-track input[type=range].muzus-progress-spinner:focus {
         outline: none; }
       .muzus .muzus-track input[type=range].muzus-progress-spinner::-webkit-slider-runnable-track {
