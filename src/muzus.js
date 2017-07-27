@@ -254,7 +254,7 @@
 			_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT;
 		};
 		_self.setClickHandler = function (handler) {
-			_playButton.addEventListener('click', function () {
+			_playButtonWrapper.addEventListener('click', function () {
 				handler(_self);
 			});
 		};
