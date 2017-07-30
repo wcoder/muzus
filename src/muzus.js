@@ -290,8 +290,8 @@
 	}
 
 	var _muzus = {
-		autoStart: true,
-		start: function () {
+		autoInit: true,
+		init: function () {
 			var _muzusDeclarations = _d.querySelectorAll(MUZUS_SELECTOR);
 
 			for (var i = 0; i < _muzusDeclarations.length; i++) {
@@ -306,17 +306,16 @@
 	return function () {
 
 		if (!!_w.Muzus) {
-			if (typeof _w.Muzus.autoStart === 'boolean') {
-				_muzus.autoStart = _w.Muzus.autoStart;
+			if (typeof _w.Muzus.autoInit === 'boolean') {
+				_muzus.autoInit = _w.Muzus.autoInit;
 			}
 			if (typeof _w.Muzus.isMobile === 'function') {
 				_muzus.isMobile = _w.Muzus.isMobile;
 			}
-			console.log(_muzus.isMobile);
 		}
 
-		if (_muzus.autoStart) {
-			_muzus.start();
+		if (_muzus.autoInit) {
+			_muzus.init();
 		}
 
 		_w.Muzus = _muzus;
