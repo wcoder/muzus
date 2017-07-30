@@ -38,12 +38,11 @@ Check [muzus/example/index.html](https://github.com/wcoder/muzus/blob/master/exa
 ### data-attributes
 Adding some data-attributes changes the behavior or appearance of the player.
 
-#### `data-repeat`
-Applied to a element with class `muzus`.
-Type: `boolean`
-Default value: `false`
+Attribute_Name | Type | Default value | Description
+-------------- |:--:|:--:| --
+`data-repeat` | `boolean` | `false` | Applied to a element with class `muzus`. Defines whether to repeat the playback after the last track is finished.
 
-Defines whether to repeat the playback after the last track is finished.
+
 
 ## Development
 
