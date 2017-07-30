@@ -193,7 +193,7 @@
 
 		function getPlayerOptionsFromElement (playerElement) {
 			return {
-				isRepeatEnabled: playerElement.getAttribute('data-repeat') || false
+				isRepeat: playerElement.getAttribute('data-repeat') || false
 			}
 		}
 	}
