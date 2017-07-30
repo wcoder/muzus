@@ -42,7 +42,12 @@ Attribute_Name | Type | Default value | Description
 -------------- |:--:|:--:| --
 `data-repeat` | `boolean` | `false` | Applied to a element with class `muzus`. Defines whether to repeat the playback after the last track is finished.
 
+### Preload options of script
+Adding in `<head>` your page, if you need setup player before initialize. Define in global object `Muzus`. [[Example]](https://github.com/wcoder/muzus/blob/master/example/index.html#L21)
 
+Option | Type | Default Value | Description
+-- | -- | -- | --
+`autoInit` | `boolean` | `true` | Defines automatically initialize player after page loaded.
 
 ## Development
 
