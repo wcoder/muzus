@@ -180,7 +180,7 @@
 
 	function Track (id, element) {
 
-		var _title = element.innerText,
+		var _titleHtml = element.innerHTML,
 			_src = element.href;
 
 		// replace element
@@ -210,7 +210,6 @@
 
 		_self.id = id;
 		_self.src = _src;
-		_self.title = _title;
 		_self.play = function () {
 			_currentState = TRACK_PLAYING;
 			newElement.className = MUZUS_TRACK + ' muzus-track-active';
@@ -268,7 +267,7 @@
 
 		// setup controls
 
-		_titleLabel.innerText = _title;
+		_titleLabel.innerHTML = _titleHtml;
 
 		if (!_muzus.isMobile()) {
 			_progressSpinner.addEventListener('mouseover', function () {
