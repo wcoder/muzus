@@ -16,6 +16,7 @@
 		MUZUS_TRACK = 'muzus-track',
 		MUZUS_PROGRESS = 'muzus-progress',
 		MUZUS_PROGRESS_TIME_HINT = 'muzus-progress-time-hint',
+		TRACK_ERROR = -1,
 		TRACK_STOPED = 0,
 		TRACK_PLAYING = 1,
 		TRACK_PAUSED = 2;
@@ -86,7 +87,7 @@
 		};
 		_player.onended = nextTrack;
 		_player.onerror = function (e) {
-			_w.console.error(e);
+			_currentTrack.error(e);
 			stopPlayer();
 			_currentTrack = null;
 		};
@@ -115,6 +116,9 @@
 				case TRACK_PAUSED:
 					_currentTrack.play();
 					_player.play();
+				break;
+				case TRACK_ERROR:
+					return;
 				break;
 				default:
 					startPlayTrack(track);
@@ -151,8 +155,14 @@
 				_currentTrack.stop();
 			}
 			_currentTrack = track;
-			_player.src = _currentTrack.src;
 
+			if (track.getState() === TRACK_ERROR)
+			{
+				nextTrack();
+				return;
+			}
+
+			_player.src = _currentTrack.src;
 			_currentTrack.play();
 			_player.play();
 		}
@@ -173,7 +183,8 @@
 				track.setCurrentTime(0);
 				track.setEndTime(preloader.duration);
 				preloader = null;
-			}
+			};
+			preloader.onerror = track.error;
 			_w.setTimeout(function () {
 				preloader.play();
 			}, 100);
@@ -213,17 +224,23 @@
 		_self.id = id;
 		_self.src = _src;
 		_self.play = function () {
+			if (_currentState === TRACK_ERROR) return;
+
 			_currentState = TRACK_PLAYING;
 			newElement.className = MUZUS_TRACK + ' muzus-track-active';
 			_playButton.className = MUZUS_PAUSE;
 			_progressBlock.className = MUZUS_PROGRESS;
 		};
 		_self.pause = function () {
+			if (_currentState === TRACK_ERROR) return;
+
 			_currentState = TRACK_PAUSED;
 			newElement.className = MUZUS_TRACK + ' muzus-track-paused';
 			_playButton.className = MUZUS_PLAY;
 		};
 		_self.stop = function () {
+			if (_currentState === TRACK_ERROR) return;
+
 			_currentState = TRACK_STOPED;
 			newElement.className = MUZUS_TRACK;
 			_playButton.className = MUZUS_PLAY;
@@ -266,6 +283,16 @@
 				}
 			});
 		};
+		_self.error = function (e) {
+			if (_currentState === TRACK_ERROR) return;
+
+			_currentState = TRACK_ERROR;
+			newElement.className = MUZUS_TRACK + ' muzus-track-error';
+
+			if (!!e && !!e.srcElement) {
+				_w.console.error('MUZUS error:', e.srcElement.src, e.srcElement.error);
+			}
+		}
 
 		// setup controls
 
