@@ -22,10 +22,12 @@
 
 	// helpers
 
-	function toFormatedString (value) {
-		var min = parseInt((value / 60) % 60),
-			sec = parseInt(value % 60);
-		return min + ':' + (sec < 10 ? '0' + sec : sec);
+	function toFormatedString (seconds) {
+		var h = parseInt(seconds / 60 / 60),
+			m = parseInt(seconds / 60 % 60),
+			s = parseInt(seconds % 60);
+
+		return (h ? h + ':' : '') + ((h && (m < 10)) ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
 	}
 
 	function createElement (tagName, className, parentElement) {
