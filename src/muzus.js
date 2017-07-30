@@ -60,12 +60,13 @@
 
 	// classes
 
-	function Player (element, _repeatTrackListEnabled) {
+	function Player (element) {
 
 		// private
 
 		var _currentTrack = null,
 			_trackList = [],
+			_options = getPlayerOptionsFromElement(element),
 			_player = createAudioElement();
 
 		// setup player
@@ -142,7 +143,7 @@
 				stopPlayer();
 				return;
 			}
-			if (nextTrackIndex < currentTrackIndex && !_repeatTrackListEnabled) {
+			if (nextTrackIndex < currentTrackIndex && !_options.isRepeat) {
 				stopPlayer();
 				return;
 			}
@@ -188,6 +189,12 @@
 			_w.setTimeout(function () {
 				preloader.play();
 			}, 100);
+		}
+
+		function getPlayerOptionsFromElement (playerElement) {
+			return {
+				isRepeatEnabled: playerElement.getAttribute('data-repeat') || false
+			}
 		}
 	}
 
@@ -323,7 +330,7 @@
 			var _muzusDeclarations = _d.querySelectorAll(MUZUS_SELECTOR);
 
 			for (var i = 0; i < _muzusDeclarations.length; i++) {
-				new Player(_muzusDeclarations[i], false);
+				new Player(_muzusDeclarations[i]);
 			}
 		},
 		isMobile: function () {

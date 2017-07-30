@@ -31,9 +31,19 @@ Each link with `href` attribute and parent element class `muzus` automatically b
     <a href="http://americanparanoia.com/AntiTrust%20-%20AntiSocial.mp3">Antisocial</a>
 </section>
 ```
-
 Check [muzus/example/index.html](https://github.com/wcoder/muzus/blob/master/example/index.html) to see more examples of usage.
 
+## Advanced Features
+
+### data-attributes
+Adding some data-attributes changes the behavior or appearance of the player.
+
+#### `data-repeat`
+Applied to a element with class `muzus`.
+Type: `boolean`
+Default value: `false`
+
+Defines whether to repeat the playback after the last track is finished.
 
 ## Development
 
@@ -63,7 +73,7 @@ gulp sass:watch
 
 ## Contributions
 
-* 
+*
 *
 
 ## License
