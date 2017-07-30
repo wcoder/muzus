@@ -24,9 +24,9 @@
 	// helpers
 
 	function toFormatedString (seconds) {
-		var h = parseInt(seconds / 60 / 60),
-			m = parseInt(seconds / 60 % 60),
-			s = parseInt(seconds % 60);
+		var h = _w.parseInt(seconds / 60 / 60),
+			m = _w.parseInt(seconds / 60 % 60),
+			s = _w.parseInt(seconds % 60);
 
 		return (h ? h + ':' : '') + ((h && (m < 10)) ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
 	}
