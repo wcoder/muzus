@@ -270,19 +270,21 @@
 
 		_titleLabel.innerText = _title;
 
-		_progressSpinner.addEventListener('mouseover', function () {
-			if (_currentState > 0 && _duration > 0) {
-				_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
-			}
-		});
-		_progressSpinner.addEventListener('mouseout', _self.hideProgressTimeHint);
-		_progressSpinner.addEventListener('mousemove', function (e) {
-			if (_currentState > 0  && _duration > 0) {
-				var time = _duration * e.offsetX / _progressSpinner.offsetWidth;
-				_progressTimeHint.innerText = toFormatedString(time);
-				_progressTimeHint.style.left = e.offsetX + 'px';
-			}
-		});
+		if (!_muzus.isMobile()) {
+			_progressSpinner.addEventListener('mouseover', function () {
+				if (_currentState > 0 && _duration > 0) {
+					_progressTimeHint.className = MUZUS_PROGRESS_TIME_HINT + ' muzus-progress-time-hint-show';
+				}
+			});
+			_progressSpinner.addEventListener('mouseout', _self.hideProgressTimeHint);
+			_progressSpinner.addEventListener('mousemove', function (e) {
+				if (_currentState > 0  && _duration > 0) {
+					var time = _duration * e.offsetX / _progressSpinner.offsetWidth;
+					_progressTimeHint.innerText = toFormatedString(time);
+					_progressTimeHint.style.left = e.offsetX + 'px';
+				}
+			});
+		}
 
 		return _self;
 	}
@@ -295,6 +297,9 @@
 			for (var i = 0; i < _muzusDeclarations.length; i++) {
 				new Player(_muzusDeclarations[i], false);
 			}
+		},
+		isMobile: function () {
+			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(_w.navigator.userAgent);
 		}
 	};
 
@@ -304,6 +309,10 @@
 			if (typeof _w.Muzus.autoStart === 'boolean') {
 				_muzus.autoStart = _w.Muzus.autoStart;
 			}
+			if (typeof _w.Muzus.isMobile === 'function') {
+				_muzus.isMobile = _w.Muzus.isMobile;
+			}
+			console.log(_muzus.isMobile);
 		}
 
 		if (_muzus.autoStart) {
