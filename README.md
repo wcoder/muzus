@@ -48,6 +48,7 @@ Adding in `<head>` your page, if you need setup player before initialize. Define
 Option | Type | Default Value | Description
 -- | -- | -- | --
 `autoInit` | `boolean` | `true` | Defines automatically initialize player after page loaded.
+`isMobile` | `function` | + | Defines custom function for check is mobile device use. 
 
 ## Development
 
