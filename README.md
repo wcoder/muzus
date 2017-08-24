@@ -1,5 +1,6 @@
-# muzus
-New conception of audio player for web. Based on [playeros](https://github.com/wcoder/playeros).
+![MUZUS](https://wcoder.github.io/muzus/muzus-logo.svg)
+
+New conception of audio player for web.
 
 ## Setup
 ```html
