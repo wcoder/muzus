@@ -32,7 +32,7 @@ Each link with `href` attribute and parent element class `muzus` automatically b
     <a href="http://americanparanoia.com/AntiTrust%20-%20AntiSocial.mp3">Antisocial</a>
 </section>
 ```
-Check [muzus/docs/index.html](https://github.com/wcoder/muzus/blob/master/docs/index.html) to see more examples of usage.
+Check [muzus/example/index.html](https://github.com/wcoder/muzus/blob/master/example/index.html) to see more examples of usage.
 
 ## Advanced Features
 
@@ -44,12 +44,12 @@ Attribute_Name | Type | Default value | Description
 `data-repeat` | `boolean` | `false` | Applied to a element with class `muzus`. Defines whether to repeat the playback after the last track is finished.
 
 ### Preload options of script
-Adding in `<head>` your page, if you need setup player before initialize. Define in global object `Muzus`. [[Example]](https://github.com/wcoder/muzus/blob/master/docs/index.html#L21)
+Adding in `<head>` your page, if you need setup player before initialize. Define in global object `Muzus`. [[Example]](https://github.com/wcoder/muzus/blob/master/example/index.html#L21)
 
 Option | Type | Default Value | Description
 -- | -- | -- | --
 `autoInit` | `boolean` | `true` | Defines automatically initialize player after page loaded.
-`isMobile` | `function` | + | Defines custom function for check is mobile device use.
+`isMobile` | `function` | + | Defines custom function for check is mobile device use. 
 
 ## Development
 
