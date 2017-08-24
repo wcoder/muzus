@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.use('/', express.static('example'));
+app.use('/', express.static('docs'));
 app.use('/dist', express.static('dist'));
 app.use('/src', express.static('src'));
 
