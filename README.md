@@ -77,11 +77,6 @@ Auto-compiling:
 gulp sass:watch
 ```
 
-## Contributions
-
-*
-*
-
 ## License
 
-[MIT License](https://github.com/wcoder/muzus/blob/master/LICENSE)
+&copy; 2017 Yauheni Pakala | [MIT License](https://github.com/wcoder/muzus/blob/master/LICENSE)
